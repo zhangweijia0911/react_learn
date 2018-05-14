@@ -2,12 +2,12 @@ import  React, {Component} from 'react';
 
 class WeatherSelecter extends Component {
     constructor (props) {
+        
         super(props)
     }
 
     render () {
         const {locationGroup,locationUpdate} = this.props;
-        console.log(locationGroup)
         return (
             <div className="weather-selecter">
                 <select onChange={(e)=>{locationUpdate(e.target.value)}}>

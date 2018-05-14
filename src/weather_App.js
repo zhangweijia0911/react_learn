@@ -9,12 +9,12 @@ class Weather_Apps extends Component {
             selectedLocation:locationName
         })
     }
-    
+
     render () {
         return (
             <div className="weather-app">
                 <WeatherSelecter locationGroup={locationGroup} locationUpdate={this.locationUpdate}></WeatherSelecter>
-                <WeatherPanel location='123'></WeatherPanel>
+                <WeatherPanel location={this.props.selectedLocation}></WeatherPanel>
             </div>
         )
     };
