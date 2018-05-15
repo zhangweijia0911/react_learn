@@ -33,6 +33,7 @@ export default class Todo extends Component {
             event.target.value = '';
         }
     };
+    //删除
     deleteTodo(index){
         store.dispatch({
             type:DEL_TODO,
