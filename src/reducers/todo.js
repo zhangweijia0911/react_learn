@@ -1,5 +1,4 @@
-import {ADD_TODO,DEL_TODO} from "../actiontypes";
-
+import {ADD_TODO,DEL_TODO} from '../actiontypes';
 let reducer = (state={list:[]},action)=>{
     if(action === undefined) return state;
     switch (action.type){

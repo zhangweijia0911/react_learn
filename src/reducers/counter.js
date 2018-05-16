@@ -1,5 +1,4 @@
-import {INCREASE,DECREASE} from "../actiontypes";
-
+import {INCREASE,DECREASE} from '../actiontypes';
 let reducer = (state = {number:0},action)=>{
     if(action === undefined) return state;
     switch (action.type){

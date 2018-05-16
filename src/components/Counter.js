@@ -1,9 +1,8 @@
 import React,{Component} from 'react';
-import {createStore} from 'redux';
+import {INCREASE,DECREASE} from '../actiontypes';
 import {store} from '../store';
 
-const INCREASE = 'INCREASE';
-const DECREASE = 'DECREASE';
+
 let increase = (amount)=>{
     {{type:INCREASE,amount}}
 }
@@ -11,28 +10,17 @@ let decrease = (amount)=>{
     {{type:DECREASE,amount}}
 }
 
-let reducer = (state = {number:0},action)=>{
-    if(action === undefined) return state;
-    switch (action.type){
-        case INCREASE:
-            return {number:state.number + action.amount};
-        case DECREASE:
-            return {number:state.number - action.amount};
-        default:
-            return state;
-    }
-}
-let store = createStore(reducer);
+
 class Counter extends Component {
     constructor(){
         super();
-        this.state = {number:store.getState().number}
+        this.state = {number:store.getState().counter.number}
     }
     componentWillMount(){
         //订阅
         this.unsubscribe = store.subscribe(()=>{
             this.setState({
-                number:store.getState().number
+                number:store.getState().counter.number
             })
         })
     }
@@ -43,8 +31,8 @@ class Counter extends Component {
         return (
             <div>
                 <p>{this.state.number}</p>
-                <button onClick={()=>store.dispatch({type:INCREASE,amount:2})}>+</button>
-                <button onClick={()=>store.dispatch({type:DECREASE,amount:2})}>-</button>
+                <button onClick={()=>store.dispatch(increase(2))}>+</button>
+                <button onClick={()=>store.dispatch(decrease(2))}>-</button>
             </div>
         )
     }
